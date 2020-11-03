@@ -1,0 +1,49 @@
+<h1 id="tableLabel">Shipper</h1>
+
+<br>
+<div class="row">
+    <div class="col-2">
+        Vui lòng nhập
+    </div>
+    <div class="col-1">
+        Tháng
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "month" type="text" class="form-control">
+    </div>
+    <div class="col-1">
+        Năm
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "year" type="text" class="form-control">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-info" (click)="getShipper()">Tra cứu</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="shipper">
+            <thead>
+              <tr>
+                <th>ShipperID</th>
+                <th>CompanyName</th>
+                <th>Phone</th>
+                <th>Tien</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let o of shipper.data ; index as i;">
+                <td>{{o.shipperId}}</td>
+                <td>{{o.companyName}}</td>
+                <td>{{o.phone}}</td>
+                <td>{{o.tien}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    
+</div>
+<div id="barchart_values" style="width: 900px; height: 300px;"></div>
+

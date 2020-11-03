@@ -1,0 +1,85 @@
+<h1 id="tableLabel">Hoa Don</h1>
+
+<br>
+<div class="row">
+    <div class="col-1">
+        Vui lòng nhập
+    </div>
+    <div class="col-2">
+        Ngày bắt đầu
+    </div>
+    <div class="col-3">
+        <input [(ngModel)]="dateFrom" type="date" class="form-control">
+    </div>
+    <div class="col-2">
+        Ngày bắt đầu
+    </div>
+    <div class="col-3">
+        <input [(ngModel)]="dateTo" type="date" class="form-control">
+    </div>
+    <div class="col-1">
+        <button class="btn btn-info" (click)="getHoaDon(1)">Tra cứu</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="order">
+            <thead>
+                <tr>
+                    <th>OrderID</th>
+                    <th>CustomerId</th>
+                    <th>EmployeeId</th>
+                    <th>OrderDate</th>
+                    <th>Xem chi tiết</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let o of order.data ; index as i;">
+                    <td>{{o.orderId}}</td>
+                    <td>{{o.customerId}}</td>
+                    <td>{{o.employeeId}}</td>
+                    <td>{{o.orderDate}}</td>
+                    <td>
+                        <button class="btn btn-outline-success " (click)="openModal(o.orderId)" >Info</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modalDetail" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+            aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-header" >
+            Mã đơn hàng {{orderID}}
+        </div>
+        <div class="modal-content">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Product ID</td>
+                        <td>Product Name</td>
+                        <td>Unit Price</td>
+                        <td>Quantity</td>
+                        <td>Discount</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of orderDetails; index as i;">
+                        <td>{{o.productId}}</td>
+                        <td>{{o.productName}}</td>
+                        <td>{{o.unitPrice}}</td>
+                        <td>{{o.quantity}}</td>
+                        <td>{{o.discount}}</td>
+                        <td>{{o.total}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+<!-- <div id="barchart_values" style="width: 900px; height: 300px;"></div> -->

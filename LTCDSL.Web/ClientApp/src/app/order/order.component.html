@@ -1,0 +1,45 @@
+<h1 id="tableLabel">Order</h1>
+
+<br>
+<div class="row">
+    <div class="col-1">
+        Vui lòng nhập
+    </div>
+    <div class="col-2">
+        Ngày bắt đầu
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "dateFrom" type="date" class="form-control">
+    </div>
+    <div class="col-2">
+        Ngày bắt đầu
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "dateTo" type="date" class="form-control">
+    </div>
+    <div class="col-1">
+        <button class="btn btn-info" (click)="getOrder()">Tra cứu</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-12">
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="order">
+            <thead>
+              <tr>
+                <th>OrderDate</th>
+                <th>So Luong</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let o of order.data ; index as i;">
+                <td>{{o.orderDate}}</td>
+                <td>{{o.soLuong}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    
+</div>
+<div id="barchart_values" style="width: 900px; height: 300px;"></div>
+

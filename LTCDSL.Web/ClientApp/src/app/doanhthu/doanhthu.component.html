@@ -1,0 +1,45 @@
+<h1 id="tableLabel">Doanh Thu</h1>
+
+<br>
+<div class="row">
+    <div class="col-2">
+        Vui lòng nhập
+    </div>
+    <div class="col-1">
+        Tháng
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "month" type="text" class="form-control">
+    </div>
+    <div class="col-1">
+        Năm
+    </div>
+    <div class="col-3">
+        <input [(ngModel)] = "year" type="text" class="form-control">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-info" (click)="getDoanhThu()">Tra cứu</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-5">
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="doanhThu">
+            <thead>
+              <tr>
+                <th>ShipCountry</th>
+                <th>DoanhThu</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let o of doanhThu.data ; index as i;">
+                <td>{{o.shipCountry}}</td>
+                <td>{{o.doanhThu}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-7">
+        <div id="piechart" style="width: 900px; height: 500px;"></div>
+    </div>
+</div>
